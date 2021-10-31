@@ -18,5 +18,6 @@ namespace XDriveReclaimer.Views
         {
             AvaloniaXamlLoader.Load(this);
         }
+
     }
 }

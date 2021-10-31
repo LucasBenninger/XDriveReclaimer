@@ -6,12 +6,28 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="XDriveReclaimer.Views.MainWindow"
         Icon="/Assets/xbox.png"
-        Title="XDriveReclaimer">
+        Title="XDriveReclaimer"
+        Width="600"
+        Height="800">
 
     <Design.DataContext>
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <StackPanel></StackPanel>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Height="600">
+            <Image Source="/Assets/xbox.png" Height="75" Width="75" Margin="10" HorizontalAlignment="Center" />
+            <Button Content="Get list of drives" Command="{Binding GetDriveListCommand}" HorizontalAlignment="Center" Margin="10"/>
+            <TextBlock Text="{Binding UsbDeviceList}" HorizontalAlignment="Center" Margin="10"></TextBlock>
+            <TextBox Text="{Binding DriveName}" Height="30" Watermark="Drive Name (/dev/sda)"></TextBox>
+        </StackPanel>
+        <StackPanel Width="300" DockPanel.Dock="Left">
+            <Button Command="{Binding FixDriveCommand}" Content="Fix MBR" HorizontalAlignment="Center"></Button>
+        </StackPanel>
+        <StackPanel Width="300" DockPanel.Dock="Right">
+            <Button Content="Mount Drive" Command="{Binding MountDriveCommand}" HorizontalAlignment="Center"></Button>
+            
+        </StackPanel>
+    </DockPanel>
 
 </Window>
